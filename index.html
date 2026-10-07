@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vazirmatn Font Studio | استودیو و پیش‌نمایش تایپ‌فیس وزیرمتن</title>
+  <link rel="stylesheet" href="Vazirmatn-font-face.css">
+  <link rel="stylesheet" href="Vazirmatn-Variable-font-face.css">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --accent: #a855f7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Vazirmatn', -apple-system, sans-serif;
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .title-group h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-weight: 600;
+    }
+
+    .header-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-inline-start: 18px;
+      transition: color 0.2s;
+    }
+    .header-links a:hover { color: var(--primary); }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 860px) {
+      .layout-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Controls Panel */
+    .controls-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      height: fit-content;
+    }
+
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .control-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .weight-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .weight-btn {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+      padding: 6px 4px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .weight-btn:hover, .weight-btn.active {
+      background: var(--primary);
+      color: #0f172a;
+      font-weight: 700;
+      border-color: var(--primary);
+    }
+
+    .presets-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .preset-btn {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: inherit;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preset-btn:hover { color: var(--text); border-color: var(--primary); }
+
+    /* Preview Canvas Area */
+    .preview-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .preview-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      min-height: 280px;
+    }
+
+    .editable-canvas {
+      width: 100%;
+      min-height: 240px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: 'Vazirmatn', sans-serif;
+      resize: vertical;
+      outline: none;
+      line-height: 1.8;
+      transition: font-size 0.1s, font-weight 0.1s;
+    }
+
+    .weights-specimen {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .specimen-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+      padding-bottom: 12px;
+    }
+    .specimen-tag {
+      width: 110px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      font-family: monospace;
+    }
+    .specimen-text {
+      font-family: 'Vazirmatn';
+      font-size: 1.25rem;
+      color: #fff;
+      flex-grow: 1;
+    }
+
+    .code-export-box {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--primary);
+      position: relative;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--primary);
+      color: #0f172a;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 36px;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-group">
+        <h1>تایپ‌فیس وزیرمتن <span class="badge">Vazirmatn Studio</span></h1>
+      </div>
+      <div class="header-links">
+        <a href="https://arham.dev" target="_blank" rel="noopener">ارحام اسمعلی (arham.dev)</a>
+        <a href="https://youtube.com/@walkcooklive" target="_blank" rel="noopener">Walk Cook Live</a>
+        <a href="https://github.com/aeskafi/vazirmatn" target="_blank" rel="noopener">گیت‌هاب</a>
+      </div>
+    </header>
+
+    <div class="layout-grid">
+      <!-- Controls -->
+      <aside class="controls-panel">
+        <div class="control-item">
+          <div class="control-label">
+            <span>وزن قلم (Font Weight)</span>
+            <span id="weightVal">400 (Regular)</span>
+          </div>
+          <input type="range" id="weightSlider" min="100" max="900" step="100" value="400">
+          <div class="weight-buttons">
+            <button class="weight-btn" onclick="setWeight(100)">100 Thin</button>
+            <button class="weight-btn" onclick="setWeight(300)">300 Light</button>
+            <button class="weight-btn active" onclick="setWeight(400)">400 Reg</button>
+            <button class="weight-btn" onclick="setWeight(500)">500 Med</button>
+            <button class="weight-btn" onclick="setWeight(600)">600 Semi</button>
+            <button class="weight-btn" onclick="setWeight(700)">700 Bold</button>
+            <button class="weight-btn" onclick="setWeight(800)">800 Extra</button>
+            <button class="weight-btn" onclick="setWeight(900)">900 Black</button>
+          </div>
+        </div>
+
+        <div class="control-item">
+          <div class="control-label">
+            <span>اندازه قلم (Size)</span>
+            <span id="sizeVal">32px</span>
+          </div>
+          <input type="range" id="sizeSlider" min="14" max="72" value="32">
+        </div>
+
+        <div class="control-item">
+          <div class="control-label">
+            <span>فاصله خطوط (Line Height)</span>
+            <span id="lineHeightVal">1.8</span>
+          </div>
+          <input type="range" id="lineHeightSlider" min="1.0" max="3.0" step="0.1" value="1.8">
+        </div>
+
+        <div class="control-item">
+          <div class="control-label">
+            <span>متن‌های نمونه (Presets)</span>
+          </div>
+          <div class="presets-btn-group">
+            <button class="preset-btn" onclick="setPreset('poem')">شعر حافظ</button>
+            <button class="preset-btn" onclick="setPreset('ui')">رابط کاربری</button>
+            <button class="preset-btn" onclick="setPreset('numbers')">اعداد فارسی</button>
+            <button class="preset-btn" onclick="setPreset('mixed')">فارسی و انگلیسی</button>
+          </div>
+        </div>
+
+        <div class="control-item">
+          <div class="control-label">
+            <span>چینش متن (Align)</span>
+          </div>
+          <div class="presets-btn-group">
+            <button class="preset-btn" onclick="setAlign('right')">راست‌چین</button>
+            <button class="preset-btn" onclick="setAlign('center')">وسط‌چین</button>
+            <button class="preset-btn" onclick="setAlign('left')">چپ‌چین</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Canvas & Specimen -->
+      <main class="preview-panel">
+        <div class="preview-card">
+          <textarea class="editable-canvas" id="canvasText" spellcheck="false">درخت دوستی بنشان که کام دل به بار آرد
+نهال دشمنی برکن که رنج بی‌شمار آرد</textarea>
+        </div>
+
+        <div class="weights-specimen">
+          <h3 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 8px;">نمونه وزن‌های مختلف تایپ‌فیس وزیرمتن</h3>
+          <div class="specimen-row">
+            <span class="specimen-tag">Thin 100</span>
+            <span class="specimen-text" style="font-weight: 100;">صبر و ظفر هر دو دوستان قدیمند، بر اثر صبر نوبت ظفر آید.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-tag">Light 300</span>
+            <span class="specimen-text" style="font-weight: 300;">صبر و ظفر هر دو دوستان قدیمند، بر اثر صبر نوبت ظفر آید.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-tag">Regular 400</span>
+            <span class="specimen-text" style="font-weight: 400;">صبر و ظفر هر دو دوستان قدیمند، بر اثر صبر نوبت ظفر آید.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-tag">Medium 500</span>
+            <span class="specimen-text" style="font-weight: 500;">صبر و ظفر هر دو دوستان قدیمند، بر اثر صبر نوبت ظفر آید.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-tag">SemiBold 600</span>
+            <span class="specimen-text" style="font-weight: 600;">صبر و ظفر هر دو دوستان قدیمند، بر اثر صبر نوبت ظفر آید.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-tag">Bold 700</span>
+            <span class="specimen-text" style="font-weight: 700;">صبر و ظفر هر دو دوستان قدیمند، بر اثر صبر نوبت ظفر آید.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-tag">Black 900</span>
+            <span class="specimen-text" style="font-weight: 900;">صبر و ظفر هر دو دوستان قدیمند، بر اثر صبر نوبت ظفر آید.</span>
+          </div>
+        </div>
+
+        <div class="preview-card" style="min-height: auto;">
+          <h3 style="font-size: 1rem; color: #fff; margin-bottom: 12px;">نحوه استفاده در CSS پروژه شما:</h3>
+          <div class="code-export-box">
+            <button class="copy-btn" onclick="copyCss()">کپی کد</button>
+            <pre id="cssSnippet">@import url('https://cdn.jsdelivr.net/gh/aeskafi/vazirmatn@master/Vazirmatn-font-face.css');
+
+body {
+  font-family: 'Vazirmatn', sans-serif;
+}</pre>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer>
+      تایپ‌فیس محبوب <strong>وزیرمتن</strong> خلق شده توسط زنده‌یاد <strong>صابر راستی‌کردار</strong> (Saber Rastikerdar) • بازنشر، ارتقا و نگهداری توسط <a href="https://arham.dev" target="_blank" rel="noopener">ارحام اسمعلی (arham.dev)</a> • سفرهای تک‌نوماد در <a href="https://youtube.com/@walkcooklive" target="_blank" rel="noopener">Walk Cook Live</a>
+    </footer>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('canvasText');
+    const weightSlider = document.getElementById('weightSlider');
+    const weightVal = document.getElementById('weightVal');
+    const sizeSlider = document.getElementById('sizeSlider');
+    const sizeVal = document.getElementById('sizeVal');
+    const lineHeightSlider = document.getElementById('lineHeightSlider');
+    const lineHeightVal = document.getElementById('lineHeightVal');
+
+    const weightNames = {
+      100: 'Thin',
+      200: 'ExtraLight',
+      300: 'Light',
+      400: 'Regular',
+      500: 'Medium',
+      600: 'SemiBold',
+      700: 'Bold',
+      800: 'ExtraBold',
+      900: 'Black'
+    };
+
+    function setWeight(w) {
+      weightSlider.value = w;
+      canvas.style.fontWeight = w;
+      weightVal.innerText = `${w} (${weightNames[w] || ''})`;
+      document.querySelectorAll('.weight-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.startsWith(w.toString()));
+      });
+    }
+
+    weightSlider.addEventListener('input', (e) => setWeight(e.target.value));
+
+    sizeSlider.addEventListener('input', (e) => {
+      canvas.style.fontSize = e.target.value + 'px';
+      sizeVal.innerText = e.target.value + 'px';
+    });
+
+    lineHeightSlider.addEventListener('input', (e) => {
+      canvas.style.lineHeight = e.target.value;
+      lineHeightVal.innerText = e.target.value;
+    });
+
+    function setAlign(align) {
+      canvas.style.textAlign = align;
+    }
+
+    const presets = {
+      poem: 'درخت دوستی بنشان که کام دل به بار آرد\nنهال دشمنی برکن که رنج بی‌شمار آرد',
+      ui: 'داشبورد مدیریت سیستم • ورود به حساب کاربری • ذخیره تغییرات\nآیا از انجام این عملیات مطمئن هستید؟ پیام‌های جدید دریافت شد.',
+      numbers: 'اعداد فارسی: ۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹\nارقام انگلیسی: 0 1 2 3 4 5 6 7 8 9\nمجموع صورتحساب: ۱,۴۵۰,۰۰۰ تومان',
+      mixed: 'Vazirmatn is a beautiful Persian/Arabic typeface.\nتایپ‌فیس وزیرمتن انتخابی ایده‌آل برای وب و رابط‌های کاربری مدرن است.'
+    };
+
+    function setPreset(p) {
+      if (presets[p]) canvas.value = presets[p];
+    }
+
+    function copyCss() {
+      const code = document.getElementById('cssSnippet').innerText;
+      navigator.clipboard.writeText(code).then(() => alert('کد CSS در حافظه کپی شد!'));
+    }
+  </script>
+</body>
+</html>

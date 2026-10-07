@@ -2,32 +2,44 @@
   "name": "vazirmatn",
   "version": "33.0.3",
   "author": "Saber Rastikerdar <saber.rastikerdar@gmail.com>",
+  "contributors": [
+    "Arham Eskafi <https://arham.dev>"
+  ],
   "license": "OFL",
-  "description": "Vazirmatn is a Persian/Arabic font. وزیرمتن یک فونت فارسی/عربی است",
+  "description": "Vazirmatn is a Persian/Arabic font and variable typeface studio. وزیرمتن یک فونت فارسی/عربی است",
   "keywords": [
     "font",
     "farsi",
     "persian",
     "arabic",
-    "typeface"
+    "typeface",
+    "webfonts",
+    "variable-font",
+    "vazirmatn"
   ],
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js"
+  },
   "files": [
     "fonts",
     "misc",
     "Round-Dots",
     "Vazirmatn-font-face.css",
     "Vazirmatn-Variable-font-face.css",
+    "index.html",
+    "server.js",
     "README.md",
     "OFL.txt",
     "AUTHORS.txt"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rastikerdar/vazirmatn"
+    "url": "git+https://github.com/aeskafi/vazirmatn.git"
   },
   "bugs": {
-    "url": "https://github.com/rastikerdar/vazirmatn/issues"
+    "url": "https://github.com/aeskafi/vazirmatn/issues"
   },
-  "homepage": "https://github.com/rastikerdar/vazirmatn#readme",
+  "homepage": "https://github.com/aeskafi/vazirmatn#readme",
   "dependencies": {}
 }
