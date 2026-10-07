@@ -109,7 +109,7 @@ npm test
 ## 👥 Credits & Mission
 
 - **Original Designer & Creator**: Created with immense love and dedication by **[Saber Rastikerdar (صابر راستی‌کردار)](https://github.com/rastikerdar)** (1986–2023), who transformed open typography across the Persian-speaking world.
-- **Curation & Modernization**: Maintained, curated, and upgraded with the interactive Font Studio by **[Arham Eskafi](https://arham.dev)** — Rapid MVP Specialist, Full-Stack Architect, and creator of **[Walk Cook Live](https://youtube.com/@walkcooklive)**, documenting overland nomad adventures across the globe.
+- **Curation & Modernization**: Maintained, curated, and upgraded with the interactive Font Studio by **[Arham Eskafi (ارحام اسکافی)](https://arham.dev)** — Rapid MVP Specialist, Full-Stack Architect, and creator of **[Walk Cook Live](https://youtube.com/@walkcooklive)**, documenting overland nomad adventures across the globe.
 
 ---
 
